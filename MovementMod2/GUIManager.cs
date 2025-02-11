@@ -5,7 +5,7 @@ public class GUIManager : MonoBehaviour
 {
     private Mod _plugin;
     private Rect _windowRect = new Rect(20, 20, 400, 300);
-    private int _currentLayout = 0; // 0 = Default layout
+    private int _currentLayout = 0;
     private string[] _layoutNames = { "Player", "Camera", "Weapon" };
 
 
@@ -61,15 +61,13 @@ public class GUIManager : MonoBehaviour
     }
     private void OnGUI()
     {
-        GUI.skin.box.normal.background = MakeTex(2, 2, Color.black); // Set box background to black
+        GUI.skin.box.normal.background = MakeTex(2, 2, Color.black);
         GUI.skin.button.normal.background = MakeTex(2, 2, new Color(49f / 255f, 89f / 255f, 139f / 255f));
 
         GUI.skin.button.hover.background = MakeTex(2, 2, new Color(67f / 255f, 122f / 255f, 190f / 255f));
         GUI.skin.button.active.background = MakeTex(2, 2, new Color(67f / 255f, 122f / 255f, 190f / 255f));
         GUI.backgroundColor = Color.black;
         
-
-        // Set text color to white for better visibility on the black background
         GUI.skin.button.normal.textColor = Color.white;
         GUI.skin.label.normal.textColor = Color.white;
 
@@ -81,7 +79,6 @@ public class GUIManager : MonoBehaviour
     {
         GUILayout.BeginHorizontal();
 
-        // Left navigation panel
         GUILayout.BeginVertical(GUILayout.Width(150));
         for (int i = 0; i < _layoutNames.Length; i++)
         {
@@ -92,7 +89,6 @@ public class GUIManager : MonoBehaviour
         }
         GUILayout.EndVertical();
 
-        // Right content panel
         GUILayout.BeginVertical();
         DrawCurrentLayout();
         GUILayout.EndVertical();
@@ -141,7 +137,7 @@ public class GUIManager : MonoBehaviour
             _plugin.fireRate = GUILayout.HorizontalSlider(_plugin.fireRate, 0.0005f, 0.1f);
         }
 
-        _plugin.TurtleMode = GUILayout.Toggle(_plugin.TurtleMode, "Shoot turtles");
+        _plugin.TurtleMode = GUILayout.Toggle(_plugin.TurtleMode, "Use Turtles");
     }
 
 }

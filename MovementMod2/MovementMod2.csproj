@@ -35,7 +35,6 @@
   <ItemGroup>
     <Compile Include="GUIManager.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="Patches\ESP.cs" />
     <Compile Include="Patches\FastShooting.cs" />
     <Compile Include="Patches\Fly.cs" />
     <Compile Include="PlayerController.cs" />

@@ -3,7 +3,7 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 
-[BepInPlugin("your.unique.guid", "My GUI Mod", "1.0.0")]
+[BepInPlugin("com.vilatik", "Mod Menu", "1.0.0")]
 public class Mod : BaseUnityPlugin
 {
     public static Mod Instance { get; private set; }
@@ -20,12 +20,8 @@ public class Mod : BaseUnityPlugin
     public bool isFlying = false;
     public float flySpeed = 1f;
 
-    public bool isESP = true;
-
     private Harmony _harmony;
     private IInputSystem _input;
-
-    //private ESP esp;
 
     private void Awake()
     {
@@ -35,10 +31,10 @@ public class Mod : BaseUnityPlugin
             return;
         }
 
-        
+
 
         Instance = this;
-        _harmony = new Harmony("com.your.guimod");
+        _harmony = new Harmony("com.vilatik");
         _harmony.PatchAll();
 
         _input = BepInEx.UnityInput.Current;
@@ -51,20 +47,5 @@ public class Mod : BaseUnityPlugin
         GameObject guiManager = new GameObject("GUI_Manager");
         guiManager.AddComponent<GUIManager>().Initialize(this);
         GameObject.DontDestroyOnLoad(guiManager);
-        //if (esp == null)
-        //{
-        //    esp = new ESP();
-        //    Logger.LogInfo("ESP plugin loaded!");
-        //}
-
-        //// Add initial object types
-        //esp.AddObjectName("Coin", Color.green);
-
     }
-    //void Update()
-    //{
-    //    List<string> objectTypes = esp.GetObjectNames();
-    //    esp.UpdateObjects(objectTypes);
-    //    esp.RenderESP();
-    //}
 }

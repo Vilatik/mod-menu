@@ -22,7 +22,7 @@ public class PlayerUpdatePatch
                 if (currentTime - lastFireTime >= fireRate)
                 {
                     Object.Instantiate(__instance.fireballPrefab, __instance.attackPoint.position, __instance.attackPoint.rotation);
-                    lastFireTime = currentTime;  // Update the last fire time
+                    lastFireTime = currentTime;
                 }
 
 
